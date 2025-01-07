@@ -32,6 +32,8 @@ class FLOW_API UFlowSubsystem : public UGameInstanceSubsystem
 public:
 	UFlowSubsystem();
 
+	static UFlowSubsystem* Get(UObject* WorldContext);
+
 	friend class UFlowAsset;
 	friend class UFlowComponent;
 	friend class UFlowNode_SubGraph;

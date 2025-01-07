@@ -29,6 +29,17 @@ UFlowSubsystem::UFlowSubsystem()
 {
 }
 
+UFlowSubsystem* UFlowSubsystem::Get(UObject* WorldContext)
+{
+	UWorld* World = GEngine->GetWorldFromContextObject(WorldContext, EGetWorldErrorMode::Assert);
+	check(World)
+
+	UFlowSubsystem* FlowSubsystem = UGameInstance::GetSubsystem<UFlowSubsystem>(World->GetGameInstance());
+	check(FlowSubsystem)
+
+	return FlowSubsystem;
+}
+
 bool UFlowSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 {
 	// Only create an instance if there is no override implementation defined elsewhere
