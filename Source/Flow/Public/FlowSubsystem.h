@@ -32,8 +32,6 @@ class FLOW_API UFlowSubsystem : public UGameInstanceSubsystem
 public:
 	UFlowSubsystem();
 
-	static UFlowSubsystem* Get(UObject* WorldContext);
-
 	friend class UFlowAsset;
 	friend class UFlowComponent;
 	friend class UFlowNode_SubGraph;
@@ -90,6 +88,9 @@ public:
 	 * Example: Spawn node might despawn all actors if Flow Graph is aborted, not completed */
 	UFUNCTION(BlueprintCallable, Category = "FlowSubsystem", meta = (DefaultToSelf = "Owner"))
 	virtual void FinishAllRootFlows(UObject* Owner, const EFlowFinishPolicy FinishPolicy);
+
+	UFUNCTION(BlueprintCallable, Category = "FlowSubsystem", meta = (DefaultToSelf = "Owner"))
+	static UFlowSubsystem* Get(UObject* WorldContext);
 
 protected:
 	UFlowAsset* CreateSubFlow(UFlowNode_SubGraph* SubGraphNode, const FString& SavedInstanceName = FString(), const bool bPreloading = false);
